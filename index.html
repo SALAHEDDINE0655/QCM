@@ -1,18 +1,81 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>MCQ Quiz</title>
-    <link rel="stylesheet" type="text/css" href="styles.css">
+  <title>Quiz</title>
 </head>
 <body>
-    <h1>Multiple Choice Quiz</h1>
-    <div id="quiz">
-        <p id="question">Question goes here</p>
-        <label>
-            <input type="checkbox" name="choice" value="choiceA"> Choice A
-        </label>
-        <label>
-            <input type="checkbox" name="choice" value="choiceB"> Choice B
-        </label>
-        <label>
-            <input type="checkbox" name
+  <h1>Quiz</h1>
+
+  <form id="quizForm">
+    <h3>Question 1:</h3>
+    <p>What is the capital of France?</p>
+    <input type="checkbox" id="q1a" name="q1" value="Paris">
+    <label for="q1a">Paris</label><br>
+    <input type="checkbox" id="q1b" name="q1" value="London">
+    <label for="q1b">London</label><br>
+    <input type="checkbox" id="q1c" name="q1" value="Berlin">
+    <label for="q1c">Berlin</label><br>
+
+    <h3>Question 2:</h3>
+    <p>Who painted the Mona Lisa?</p>
+    <input type="checkbox" id="q2a" name="q2" value="Leonardo da Vinci">
+    <label for="q2a">Leonardo da Vinci</label><br>
+    <input type="checkbox" id="q2b" name="q2" value="Vincent van Gogh">
+    <label for="q2b">Vincent van Gogh</label><br>
+    <input type="checkbox" id="q2c" name="q2" value="Pablo Picasso">
+    <label for="q2c">Pablo Picasso</label><br>
+
+    <h3>Question 3:</h3>
+    <p>What is the largest planet in our solar system?</p>
+    <input type="checkbox" id="q3a" name="q3" value="Jupiter">
+    <label for="q3a">Jupiter</label><br>
+    <input type="checkbox" id="q3b" name="q3" value="Earth">
+    <label for="q3b">Earth</label><br>
+    <input type="checkbox" id="q3c" name="q3" value="Mars">
+    <label for="q3c">Mars</label><br>
+
+    <br>
+    <input type="submit" value="Submit">
+  </form>
+
+  <div id="result"></div>
+
+  <script>
+    document.getElementById("quizForm").addEventListener("submit", function(event) {
+      event.preventDefault();
+      showResult();
+    });
+
+    function showResult() {
+      var resultDiv = document.getElementById("result");
+      var score = 0;
+
+      // Check answers
+      var q1Answer = document.querySelector('input[name="q1"]:checked').value;
+      if (q1Answer === "Paris") {
+        score++;
+      }
+
+      var q2Answer = document.querySelector('input[name="q2"]:checked').value;
+      if (q2Answer === "Leonardo da Vinci") {
+        score++;
+      }
+
+      var q3Answer = document.querySelector('input[name="q3"]:checked').value;
+      if (q3Answer === "Jupiter") {
+        score++;
+      }
+
+      // Display result
+      resultDiv.innerHTML = "You scored " + score + " out of 3.";
+
+      // Optional: You can perform additional actions based on the score
+      if (score === 3) {
+        resultDiv.innerHTML += " Great job!";
+      } else {
+        resultDiv.innerHTML += " Keep practicing!";
+      }
+    }
+  </script>
+</body>
+</html>
